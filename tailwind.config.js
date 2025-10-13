@@ -42,6 +42,7 @@ module.exports = {
   },
 
   plugins: [
-    require("tw-animate-css"), // include only if you’re using tw-animate-css
+    require("tw-animate-css"),
+    require("@tailwindcss/forms"),
   ],
 };
