@@ -3,8 +3,27 @@
 @tailwind utilities;
 
 /* ===========================
-   Theme Variables
+  Theme Variables
 =========================== */
+
+/* ---------------------------------------------------------------------------
+  Development: hide Next.js error overlay / dev overlay
+  NOTE: this only hides the overlay injected by Next during `next dev`.
+  It does NOT fix the underlying hydration/runtime error — you should still
+  address the hydration mismatch (recommended). Keep this as a temporary
+  visual workaround only.
+--------------------------------------------------------------------------- */
+/* Common Next/React overlay selectors — use !important to ensure hiding */
+#__next_dev_overlay,
+.next-dev-overlay,
+.nextjs-dev-overlay,
+.nextjs_error,
+.nextjs-error,
+.next-overlay,
+.react-dev-overlay {
+  display: none !important;
+  visibility: hidden !important;
+}
 
 /* Light Mode (default) */
 :root {
@@ -119,7 +138,7 @@
 =========================== */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground transition-colors duration-300;

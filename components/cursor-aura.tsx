@@ -34,6 +34,7 @@ export function CursorAura() {
     window.addEventListener("mousemove", handleMove)
 
     function loop() {
+      if (!ctx) return;
       // fade background slightly to leave trailing glow
       ctx.fillStyle = "rgba(0,0,0,0.08)"
       ctx.fillRect(0, 0, w, h)

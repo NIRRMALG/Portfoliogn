@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorFluid } from "@/components/cursor-fluid";
+import { Footer } from "@/components/footer";
 
 export default function RootLayout({
   children,
@@ -13,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -21,8 +22,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <CursorFluid enabled={true} />
           <Analytics />
+          <CursorFluid enabled={true} />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

@@ -8,6 +8,8 @@ import { AchievementsSection } from "@/components/sections/achievements-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { InternshipsSection } from "@/components/sections/internships-section"
 
+import { ClientCursor } from "@/components/client-cursor";
+
 export default function Page() {
   return (
     <main>
@@ -26,11 +28,12 @@ export default function Page() {
         <ContactSection />
         <footer className="border-t bg-background text-foreground">
           <div className="mx-auto max-w-6xl px-4 py-8 text-center text-sm">
-            <p className="font-medium">© {new Date().getFullYear()} Nirrmal G — All rights reserved.</p>
+            <p className="font-medium">© 2025 Nirrmal G — All rights reserved.</p>
             <p className="mt-2 text-xs text-muted-foreground">Crafted with passion and creativity.</p>
           </div>
         </footer>
       </div>
+      <ClientCursor />
     </main>
   )
 }
