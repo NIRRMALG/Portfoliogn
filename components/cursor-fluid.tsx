@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { useTouchDevice } from "@/hooks/use-touch-device";
 
 export function CursorFluid({ enabled }: { enabled: boolean }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const isTouchDevice = useTouchDevice();
 
   useEffect(() => {
     if (!enabled) return;
@@ -41,7 +43,7 @@ export function CursorFluid({ enabled }: { enabled: boolean }) {
     };
   }, [enabled]);
 
-  return enabled ? (
+  return enabled && !isTouchDevice ? (
     <div
       ref={ref}
       aria-hidden

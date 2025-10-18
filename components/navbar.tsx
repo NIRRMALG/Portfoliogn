@@ -1,11 +1,14 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ThemeToggle } from "./theme-toggle"
 import { site } from "@/data/site"
 import { Button } from "@/components/ui/button"
 import { Logo } from "./logo"
+import { Menu, X } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 const links = [
 	{ href: "#home", label: "Home" },
@@ -19,6 +22,8 @@ const links = [
 ]
 
 export function Navbar() {
+	const [isOpen, setIsOpen] = useState(false)
+	
 	return (
 		<header className="sticky top-0 z-50 border-b bg-background/100 backdrop-blur text-foreground">
 			<nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -48,6 +53,47 @@ export function Navbar() {
 						</a>
 					</Button>
 					<ThemeToggle />
+					
+					<Sheet open={isOpen} onOpenChange={setIsOpen}>
+						<SheetTrigger asChild>
+							<Button variant="ghost" size="icon" className="md:hidden">
+								<Menu className="h-5 w-5" />
+								<span className="sr-only">Toggle menu</span>
+							</Button>
+						</SheetTrigger>
+						<SheetContent side="right" className="w-full sm:w-[300px] pr-0">
+							<div className="mt-6 flex flex-col gap-4">
+								{links.map((l) => (
+									<Button
+										key={l.href}
+										asChild
+										size="sm"
+										variant="ghost"
+										className="w-full justify-start"
+										onClick={() => setIsOpen(false)}
+									>
+										<a href={l.href}>{l.label}</a>
+									</Button>
+								))}
+								<Button
+									asChild
+									size="sm"
+									className="mt-2 w-full justify-start"
+									onClick={() => setIsOpen(false)}
+								>
+									<a
+										href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
+											"nirrmalg21@gmail.com"
+										)}`}
+										target="_blank"
+										rel="noreferrer"
+									>
+										Contact Me
+									</a>
+								</Button>
+							</div>
+						</SheetContent>
+					</Sheet>
 				</div>
 			</nav>
 		</header>
